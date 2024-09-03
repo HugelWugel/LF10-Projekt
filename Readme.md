@@ -8,7 +8,7 @@ Ziel ist es dass in der Gui die Daten angezeigt werden und bei niedrigem Bestand
 Datenbank: SQL  
 Gui: WPF  
 Programmiersprachen: C#  
-Mockup: Figma  
+Mockup: Drawio  
 Versionsverwaltung: (Git)  
 
 ### Funktionen:
