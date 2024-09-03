@@ -5,11 +5,11 @@ Es soll dazu eine Oberfläche entwickelt werden und im Hintergrund eine Datenban
 Ziel ist es dass in der Gui die Daten angezeigt werden und bei niedrigem Bestand benachrichtigt wird.
 
 ### Architektur:
-Datenbank: SQL
-Gui: WPF
-Programmiersprachen: C#
-Mockup: Figma
-Versionsverwaltung: (Git)
+Datenbank: SQL  
+Gui: WPF  
+Programmiersprachen: C#  
+Mockup: Figma  
+Versionsverwaltung: (Git)  
 
 ### Funktionen:
 - Anzeigen des Materialsbestandes
