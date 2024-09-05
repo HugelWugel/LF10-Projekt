@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Tabellen Thorsten.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Tabellen Thorsten.jpeg" />
+  </ItemGroup>
+
 </Project>
