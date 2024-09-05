@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Datenbankanbindung;
 
 namespace LF10_Lager_Projekt
 {
@@ -27,6 +28,22 @@ namespace LF10_Lager_Projekt
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
             Hide();
+        }
+
+        private void okButton_Click(object sender, RoutedEventArgs e)
+        {
+            switch (PopupActionName.Content)
+            {
+                case "Eintrag hinzufügen":
+                    Backend.createDataEntry(NameTextbox.Text, WarengruppeTextbox.Text, Convert.ToInt32(MengeTextbox.Text), Convert.ToInt32(GrenzwertTextbox.Text));
+                    Backend.getAllData();
+                    Hide();
+                    break;
+                case "Eintrag bearbeiten":
+                    break;
+                case "Eintrag löschen":
+                    break;
+            }
         }
     }
 }
