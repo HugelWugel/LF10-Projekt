@@ -3,7 +3,7 @@
 Erstellen eines Programms zur Unterstützung des Einkaufs.
 Es soll dazu eine Oberfläche entwickelt werden und im Hintergrund eine Datenbank.
 Ziel ist es dass in der Gui die Daten angezeigt werden und bei niedrigem Bestand benachrichtigt wird.
-
+lololol  
 ### Architektur:
 Datenbank: SQL  
 Gui: WPF  
