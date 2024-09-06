@@ -14,8 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Xml.Serialization;
-
 using Datenbankanbindung;
+using System.Collections.ObjectModel;
 
 namespace LF10_Lager_Projekt
 {
@@ -24,13 +24,15 @@ namespace LF10_Lager_Projekt
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Popup popup = new Popup();
-
+        public Popup popup;
+        public ObservableCollection<Lagerartikel> AllArtikel { get; set; }
+        public ObservableCollection<kritArtikel> KritArtikel { get; set; }
+        private Backend dbService = new Backend();
         public MainWindow()
         {
             InitializeComponent();
-            AllDataTable.ItemsSource = Backend.getAllData().DefaultView;
-            KritDataTable.ItemsSource = Backend.getKritData().DefaultView;
+            popup = new Popup(this);
+            LoadData();
         }
 
         private void hinzufuegenButton_Click(object sender, RoutedEventArgs e)
@@ -73,6 +75,14 @@ namespace LF10_Lager_Projekt
         public void OnWindowClosing(object sender, CancelEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        public void LoadData()
+        {
+            AllArtikel = dbService.getAllData();
+            KritArtikel = dbService.getKritData();
+            AllDataTable.ItemsSource = AllArtikel;
+            KritDataTable.ItemsSource = KritArtikel;
         }
     }
 }

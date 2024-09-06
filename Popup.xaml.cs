@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Datenbankanbindung;
+using LF10_Lager_Projekt;
 
 namespace LF10_Lager_Projekt
 {
@@ -20,9 +21,11 @@ namespace LF10_Lager_Projekt
     /// </summary>
     public partial class Popup : Window
     {
-        public Popup()
+        private MainWindow mainWindow;
+        public Popup(MainWindow window)
         {
             InitializeComponent();
+            mainWindow = window;
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
@@ -36,7 +39,7 @@ namespace LF10_Lager_Projekt
             {
                 case "Eintrag hinzufügen":
                     Backend.createDataEntry(NameTextbox.Text, WarengruppeTextbox.Text, Convert.ToInt32(MengeTextbox.Text), Convert.ToInt32(GrenzwertTextbox.Text));
-                    Backend.getAllData();
+                    mainWindow.LoadData();
                     Hide();
                     break;
                 case "Eintrag bearbeiten":

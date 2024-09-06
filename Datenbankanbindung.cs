@@ -4,6 +4,8 @@ using System;
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Controls;
+using LF10_Lager_Projekt;
+using System.Collections.ObjectModel;
 
 namespace Datenbankanbindung
 {
@@ -13,38 +15,60 @@ namespace Datenbankanbindung
         private static string connectionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={databasePath};Integrated Security=True";
         public static DataTable Bestand = new DataTable();
         public static DataTable kritBes = new DataTable();
+        private static ObservableCollection<Lagerartikel> AllArtikel = new ObservableCollection<Lagerartikel>();
+        private static ObservableCollection<kritArtikel> KritArtikel = new ObservableCollection<kritArtikel>();
 
-        public static DataTable getAllData()
+        public ObservableCollection<Lagerartikel> getAllData()
         {
+            AllArtikel.Clear();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "SELECT * FROM Lagerbestand where Materialnummer is not null";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    connection.Open();
-                    adapter.Fill(Bestand);
-                    connection.Close();
+                    while (reader.Read())
+                    {
+                        AllArtikel.Add(new Lagerartikel
+                        {
+                            Materialnummer = Convert.ToInt32(reader["Materialnummer"]),
+                            Materialname = reader["Materialname"].ToString(),
+                            Warengruppe= reader["Warengruppe"].ToString(),
+                            Menge = Convert.ToInt32(reader["Menge"]),
+                            Grenzwert = Convert.ToInt32(reader["Grenzwert"])
+                        });
+                    }
                 }
             }
-            return Bestand;
+            return AllArtikel;
         }
 
-        public static DataTable getKritData()
+        public ObservableCollection<kritArtikel> getKritData()
         {
+            KritArtikel.Clear();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "Select Materialnummer, Menge, Grenzwert From Lagerbestand Where Menge < Grenzwert and Materialnummer is not null";
-                SqlDataAdapter adapterKrit = new SqlDataAdapter(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    connection.Open();
-                    adapterKrit.Fill(kritBes);
-                    connection.Close();
+                    while (reader.Read())
+                    {
+                        KritArtikel.Add(new kritArtikel
+                        {
+                            Materialnummer = Convert.ToInt32(reader["Materialnummer"]),
+                            Menge = Convert.ToInt32(reader["Menge"]),
+                            Grenzwert = Convert.ToInt32(reader["Grenzwert"])
+                        });
+                    }
                 }
             }
-            return kritBes;
+            return KritArtikel;
         }
 
-        public static int createDataEntry(string materialname, string warengruppe, int menge, int grenzwert)
+        public static void createDataEntry(string materialname, string warengruppe, int menge, int grenzwert)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -58,9 +82,7 @@ namespace Datenbankanbindung
                     command.Parameters.AddWithValue("@Menge", menge);
                     command.Parameters.AddWithValue("@Grenzwert", grenzwert);
 
-                    int rowsAffected = command.ExecuteNonQuery();
-                    connection.Close();
-                    return rowsAffected;
+                    command.ExecuteNonQuery();
                 }
             }
         }
@@ -79,6 +101,7 @@ namespace Datenbankanbindung
                     command.Parameters.AddWithValue("@Grenzwert", grenzwert);
 
                     int rowsAffected = command.ExecuteNonQuery();
+                    connection.Close();
                 }
             }
         }
