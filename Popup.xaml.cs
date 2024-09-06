@@ -43,8 +43,12 @@ namespace LF10_Lager_Projekt
                     Hide();
                     break;
                 case "Eintrag bearbeiten":
+                    mainWindow.LoadData();
+                    Hide();
                     break;
                 case "Eintrag löschen":
+                    mainWindow.LoadData();
+                    Hide();
                     break;
             }
         }

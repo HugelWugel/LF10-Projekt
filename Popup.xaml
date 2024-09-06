@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LF10_Lager_Projekt"
         mc:Ignorable="d"
-        Title="Popup" Height="200" Width="600" Icon="/Tabellen Thorsten.jpeg" WindowStyle="None">
+        Title="Popup" Height="200" Width="600" Icon="/Tabellen Thorsten.jpeg" WindowStartupLocation="CenterOwner" WindowStyle="None">
     <Grid>
-        <Label x:Name="PopupActionName" Content="Hinzufügen" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="PopupActionName" Content="Hinzufügen" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Gainsboro" Height="28" Width="600"/>
         <Button x:Name="cancelButton" Content="abbrechen" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" Height="20" Margin="0,0,15,10" Click="cancelButton_Click"/>
         <Button x:Name="okButton" Content="OK" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" Height="20" Margin="0,0,90,10" Click="okButton_Click"/>
         <Grid Margin="0,40,0,45">
-            <TextBox x:Name="NameTextbox" HorizontalAlignment="Left" Margin="20,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Materialname"/>
-            <TextBox x:Name="MengeTextbox" HorizontalAlignment="Left" Margin="310,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Materialname" AutomationProperties.ItemType="int"/>
-            <TextBox x:Name="GrenzwertTextbox" HorizontalAlignment="Left" Margin="460,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Materialname" AutomationProperties.ItemType="int"/>
-            <TextBox x:Name="WarengruppeTextbox" HorizontalAlignment="Left" Margin="160,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Materialname" AutomationProperties.ItemType="string"/>
+            <TextBox x:Name="NameTextbox" HorizontalAlignment="Left" Margin="20,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Materialname" TabIndex="1"/>
+            <TextBox x:Name="MengeTextbox" HorizontalAlignment="Left" Margin="310,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Materialname" AutomationProperties.ItemType="int" IsTabStop="False" TabIndex="3"/>
+            <TextBox x:Name="GrenzwertTextbox" HorizontalAlignment="Left" Margin="460,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Materialname" AutomationProperties.ItemType="int" TabIndex="4" IsTabStop="False"/>
+            <TextBox x:Name="WarengruppeTextbox" HorizontalAlignment="Left" Margin="160,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Materialname" AutomationProperties.ItemType="string" IsTabStop="False" TabIndex="2"/>
             <Label Content="Materialname" HorizontalAlignment="Left" Margin="20,23,0,0" VerticalAlignment="Top" Width="120"/>
             <Label Content="Warengruppe" HorizontalAlignment="Left" Margin="160,23,0,0" VerticalAlignment="Top" Width="120"/>
             <Label Content="Menge" HorizontalAlignment="Left" Margin="310,23,0,0" VerticalAlignment="Top" Width="120"/>
