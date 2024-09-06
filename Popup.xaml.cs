@@ -12,13 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Datenbankanbindung;
-using LF10_Lager_Projekt;
 
 namespace LF10_Lager_Projekt
 {
-    /// <summary>
-    /// Interaktionslogik für Popup.xaml
-    /// </summary>
     public partial class Popup : Window
     {
         private MainWindow mainWindow;
@@ -38,7 +34,7 @@ namespace LF10_Lager_Projekt
             switch (PopupActionName.Content)
             {
                 case "Eintrag hinzufügen":
-                    Backend.createDataEntry(NameTextbox.Text, WarengruppeTextbox.Text, Convert.ToInt32(MengeTextbox.Text), Convert.ToInt32(GrenzwertTextbox.Text));
+                    dbService.createDataEntry(NameTextbox.Text, WarengruppeTextbox.Text, Convert.ToInt32(MengeTextbox.Text), Convert.ToInt32(GrenzwertTextbox.Text));
                     mainWindow.LoadData();
                     Hide();
                     break;

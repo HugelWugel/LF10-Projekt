@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace Datenbankanbindung
 {
-    public class Backend
+    public class dbService
     {
         private static string databasePath = @"C:\Users\simmatm\source\repos\LF10\Lager.mdf";
         private static string connectionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={databasePath};Integrated Security=True";

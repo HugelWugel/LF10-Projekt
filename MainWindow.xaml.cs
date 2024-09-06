@@ -27,7 +27,7 @@ namespace LF10_Lager_Projekt
         public Popup popup;
         public ObservableCollection<Lagerartikel> AllArtikel { get; set; }
         public ObservableCollection<kritArtikel> KritArtikel { get; set; }
-        private Backend dbService = new Backend();
+        private dbService dbService = new dbService();
         public MainWindow()
         {
             InitializeComponent();
