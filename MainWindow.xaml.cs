@@ -68,6 +68,7 @@ namespace LF10_Lager_Projekt
             switch (action)
             {
                 case 1:
+                    popup.clearTextboxes();
                     popup.Show();
                     popup.Activate();
                     popup.PopupActionName.Content = "Eintrag hinzufügen";
@@ -75,7 +76,7 @@ namespace LF10_Lager_Projekt
                 case 2:
                     popup.PopupActionName.Content = "Eintrag bearbeiten";
                     Lagerartikel ausgewählterArtikel = AllDataTable.SelectedItem as Lagerartikel;
-                    popup.updateTextboxes(ausgewählterArtikel.Materialnummer);
+                    popup.updateTextboxes(ausgewählterArtikel);
                     popup.Show();
                     popup.Activate();
                     break;
@@ -93,11 +94,6 @@ namespace LF10_Lager_Projekt
             KritArtikel = dbService.getKritData();
             AllDataTable.ItemsSource = AllArtikel;
             KritDataTable.ItemsSource = KritArtikel;
-        }
-
-        private void KritDataTable_SelectionChanged()
-        {
-
         }
 
         private void AllDataTable_SelectionChanged(object sender, SelectionChangedEventArgs e)

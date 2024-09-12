@@ -26,16 +26,28 @@ namespace LF10_Lager_Projekt
             mainWindow = window;
         }
 
-        public void updateTextboxes(int id)
+        public void updateTextboxes(Lagerartikel Eintrag)
         {
-            idTextbox.Text = dbService.AllArtikel[id].Materialnummer.ToString();
-            NameTextbox.Text = dbService.AllArtikel[id].Materialname;
-            WarengruppeTextbox.Text = dbService.AllArtikel[id].Warengruppe;
-            MengeTextbox.Text = dbService.AllArtikel[id].Menge.ToString();
-            GrenzwertTextbox.Text = dbService.AllArtikel[id].Menge.ToString();
+            idTextbox.Text = Eintrag.Materialnummer.ToString();
+            NameTextbox.Text = Eintrag.Materialname;
+            WarengruppeTextbox.Text = Eintrag.Warengruppe;
+            MengeTextbox.Text = Eintrag.Menge.ToString();
+            GrenzwertTextbox.Text = Eintrag.Menge.ToString();
 
             idLabel.Visibility = Visibility.Visible;
             idTextbox.Visibility = Visibility.Visible;
+        }
+
+        public void clearTextboxes()
+        {
+            idTextbox.Text = "";
+            NameTextbox.Text = "";
+            WarengruppeTextbox.Text = "";
+            MengeTextbox.Text = "";
+            GrenzwertTextbox.Text = "";
+
+            idLabel.Visibility = Visibility.Hidden;
+            idTextbox.Visibility = Visibility.Hidden;
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
