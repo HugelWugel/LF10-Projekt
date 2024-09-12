@@ -6,6 +6,8 @@ using System.Windows.Documents;
 using System.Windows.Controls;
 using LF10_Lager_Projekt;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Datenbankanbindung
 {
@@ -15,7 +17,7 @@ namespace Datenbankanbindung
         private static string connectionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={databasePath};Integrated Security=True";
         public static DataTable Bestand = new DataTable();
         public static DataTable kritBes = new DataTable();
-        private static ObservableCollection<Lagerartikel> AllArtikel = new ObservableCollection<Lagerartikel>();
+        public static ObservableCollection<Lagerartikel> AllArtikel = new ObservableCollection<Lagerartikel>();
         private static ObservableCollection<kritArtikel> KritArtikel = new ObservableCollection<kritArtikel>();
 
         public ObservableCollection<Lagerartikel> getAllData()
@@ -40,6 +42,7 @@ namespace Datenbankanbindung
                         });
                     }
                 }
+                connection.Close();
             }
             return AllArtikel;
         }
@@ -64,6 +67,7 @@ namespace Datenbankanbindung
                         });
                     }
                 }
+                connection.Close();
             }
             return KritArtikel;
         }
@@ -76,13 +80,13 @@ namespace Datenbankanbindung
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     connection.Open();
-                    // Parameter setzen, um SQL-Injection zu vermeiden
                     command.Parameters.AddWithValue("@Materialname", materialname);
                     command.Parameters.AddWithValue("@Warengruppe", warengruppe);
                     command.Parameters.AddWithValue("@Menge", menge);
                     command.Parameters.AddWithValue("@Grenzwert", grenzwert);
 
                     command.ExecuteNonQuery();
+                    connection.Close();
                 }
             }
         }
@@ -91,10 +95,11 @@ namespace Datenbankanbindung
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "Select Materialnummer, Menge, Grenzwert From Lagerbestand Where Menge < Grenzwert and Materialnummer is not null";
+                string query = $"Update Lagerbestand SET Materialname = @Materialname, Warengruppe = @Warengruppe, Menge = @Menge, Grenzwert = @Grenzwert WHERE Materialnummer = @ID";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Parameter setzen, um SQL-Injection zu vermeiden
+                    connection.Open();
+                    command.Parameters.AddWithValue("@ID", id);
                     command.Parameters.AddWithValue("@Materialname", materialname);
                     command.Parameters.AddWithValue("@Warengruppe", warengruppe);
                     command.Parameters.AddWithValue("@Menge", menge);
@@ -106,19 +111,24 @@ namespace Datenbankanbindung
             }
         }
 
-        public static void deleteDataEntry(int id)
+        public static int deleteDataEntry(List<int> ids)
         {
+            int rowsAffected;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "Select Materialnummer, Menge, Grenzwert From Lagerbestand Where Menge < Grenzwert and Materialnummer is not null";
+                string query = $"DELETE FROM Lagerbestand WHERE Materialnummer IN ({string.Join(",", ids.Select((id, index) => $"@id{index}"))})";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Parameter setzen, um SQL-Injection zu vermeiden
-                    command.Parameters.AddWithValue("@Materialnummer", id);
-
-                    int rowsAffected = command.ExecuteNonQuery();
+                    connection.Open();
+                    for (int i = 0; i < ids.Count; i++)
+                    {
+                        command.Parameters.AddWithValue($"@id{i}", ids[i]);
+                    }
+                    rowsAffected = command.ExecuteNonQuery();
                 }
+                connection.Close();
             }
+            return rowsAffected;
         }
     }
 }

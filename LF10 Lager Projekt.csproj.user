@@ -7,6 +7,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Styles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Popup.xaml">
       <SubType>Designer</SubType>
     </Page>

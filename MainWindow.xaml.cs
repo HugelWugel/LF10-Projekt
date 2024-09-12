@@ -16,6 +16,7 @@ using System.ComponentModel;
 using System.Xml.Serialization;
 using Datenbankanbindung;
 using System.Collections.ObjectModel;
+using System.Data;
 
 namespace LF10_Lager_Projekt
 {
@@ -28,6 +29,7 @@ namespace LF10_Lager_Projekt
         public ObservableCollection<Lagerartikel> AllArtikel { get; set; }
         public ObservableCollection<kritArtikel> KritArtikel { get; set; }
         private dbService dbService = new dbService();
+        public object dataEntry;
         public MainWindow()
         {
             InitializeComponent();
@@ -47,7 +49,18 @@ namespace LF10_Lager_Projekt
 
         private void loeschenButton_Click(object sender, RoutedEventArgs e)
         {
-            openPopup(3);
+            MessageBoxResult result = MessageBox.Show($"Möchten Sie alle {AllDataTable.SelectedItems.Count} selektieren Einträge löschen?", "Fortfahren", MessageBoxButton.OKCancel, MessageBoxImage.Hand);
+            if (result == MessageBoxResult.Yes)
+            {
+                List<int> ids = new List<int>();
+                for (int i = 0; AllDataTable.SelectedItems.Count > i; i++)
+                {
+                    Lagerartikel ausgewählterArtikel = AllDataTable.SelectedItems[i] as Lagerartikel;
+                    ids.Add(ausgewählterArtikel.Materialnummer);
+                }
+                int affectedRows = dbService.deleteDataEntry(ids);
+                LoadData();
+            }            
         }
 
         public void openPopup(int action)
@@ -60,14 +73,11 @@ namespace LF10_Lager_Projekt
                     popup.PopupActionName.Content = "Eintrag hinzufügen";
                     break;
                 case 2:
-                    popup.Show();
-                    popup.Activate();
                     popup.PopupActionName.Content = "Eintrag bearbeiten";
-                    break;
-                case 3:
+                    Lagerartikel ausgewählterArtikel = AllDataTable.SelectedItem as Lagerartikel;
+                    popup.updateTextboxes(ausgewählterArtikel.Materialnummer);
                     popup.Show();
                     popup.Activate();
-                    popup.PopupActionName.Content = "Eintrag löschen";
                     break;
             }
         }
@@ -83,6 +93,38 @@ namespace LF10_Lager_Projekt
             KritArtikel = dbService.getKritData();
             AllDataTable.ItemsSource = AllArtikel;
             KritDataTable.ItemsSource = KritArtikel;
+        }
+
+        private void KritDataTable_SelectionChanged()
+        {
+
+        }
+
+        private void AllDataTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (AllDataTable.SelectedCells != null)
+            {
+                if (AllDataTable.SelectedItems.Count == 1)
+                {
+                    bearbeitenButton.IsEnabled = true;
+                    loeschenButton.IsEnabled = true;
+                }
+                else if (AllDataTable.SelectedItems.Count > 1) 
+                {
+                    loeschenButton.IsEnabled = true;
+                    bearbeitenButton.IsEnabled = false;
+                }
+                else
+                {
+                    loeschenButton.IsEnabled = false;
+                    bearbeitenButton.IsEnabled = false;
+                }
+            }
+            else
+            {
+                loeschenButton.IsEnabled = false;
+                bearbeitenButton.IsEnabled = false;
+            }
         }
     }
 }

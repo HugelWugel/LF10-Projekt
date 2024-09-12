@@ -9,58 +9,95 @@
     Title="Dashboard"
     Width="1000"
     Height="600"
-    mc:Ignorable="d" Icon="/Tabellen Thorsten.jpeg"
-    Closing="OnWindowClosing">
+    Closing="OnWindowClosing"
+    Icon="/Tabellen Thorsten.jpeg"
+    mc:Ignorable="d"
+    FontSize="14"
+    FontFamily="Arial">
     <Grid>
         <TabControl>
             <TabItem Header="Dashboard">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="KritDataTable" Margin="0,65,0,0" AutoGenerateColumns="True" IsReadOnly="True" IsSynchronizedWithCurrentItem="False" />
+                    <DataGrid
+                        x:Name="KritDataTable"
+                        Margin="0,65,0,0"
+                        AutoGenerateColumns="True"
+                        CanUserReorderColumns="False"
+                        CanUserResizeColumns="False"
+                        CanUserSortColumns="False"
+                        ColumnWidth="*"
+                        IsReadOnly="True"
+                        IsSynchronizedWithCurrentItem="False" />
                     <Grid Margin="0,0,0,0" VerticalAlignment="Top">
                         <Button
-                        x:Name="Bestellbutton"
-                        Width="100"
-                        Height="40"
-                        Margin="0,0,20,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Content="Bestellen"/>
+                            x:Name="Bestellbutton"
+                            Width="100"
+                            Height="40"
+                            Margin="0,0,20,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Content="Bestellen"
+                            Style="{DynamicResource RoundButton}" />
                         <Image
-                        Source="/Tabellen Thorsten.jpeg"
-                        Stretch="Fill" AutomationProperties.HelpText="Tabellen Thorsten" AutomationProperties.Name="TabellenThorsten" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" />
+                            Width="70"
+                            Height="64"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            AutomationProperties.HelpText="Tabellen Thorsten"
+                            AutomationProperties.Name="TabellenThorsten"
+                            Source="/Tabellen Thorsten.jpeg"
+                            Stretch="Fill" />
                     </Grid>
                 </Grid>
             </TabItem>
             <TabItem x:Name="BestandslisteTab" Header="Bestandsteile">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="AllDataTable"
-                        Margin="0,65,0,0" AutoGenerateColumns="True" IsReadOnly="True" />
+                    <DataGrid
+                        x:Name="AllDataTable"
+                        Margin="0,65,0,0"
+                        AutoGenerateColumns="True"
+                        CanUserReorderColumns="False"
+                        CanUserResizeColumns="False"
+                        CanUserSortColumns="False"
+                        ColumnWidth="*"
+                        IsReadOnly="True" SelectionChanged="AllDataTable_SelectionChanged" />
                     <Grid Margin="0,0,0,0" VerticalAlignment="Top">
                         <Button
-                        x:Name="hinzufuegenButton"
-                        Width="100"
-                        Height="40"
-                        Margin="0,0,20,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Content="Hinzufügen" Click="hinzufuegenButton_Click" />
+                            x:Name="hinzufuegenButton"
+                            Width="100"
+                            Height="40"
+                            Margin="0,0,20,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Click="hinzufuegenButton_Click"
+                            Content="Hinzufügen" />
                         <Button
-                        x:Name="bearbeitenButton"
-                        Width="100"
-                        Height="40"
-                        Margin="0,0,150,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Content="Bearbeiten" Click="bearbeitenButton_Click" />
+                            x:Name="bearbeitenButton"
+                            Width="100"
+                            Height="40"
+                            Margin="0,0,150,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Click="bearbeitenButton_Click"
+                            Content="Bearbeiten" IsEnabled="False" />
                         <Button
-                        x:Name="loeschenButton"
-                        Width="100"
-                        Height="40"
-                        VerticalAlignment="Center"
-                        Content="Löschen" HorizontalAlignment="Right" Margin="0,0,280,0" Click="loeschenButton_Click" />
+                            x:Name="loeschenButton"
+                            Width="100"
+                            Height="40"
+                            Margin="0,0,280,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Click="loeschenButton_Click"
+                            Content="Löschen" IsEnabled="False" />
                         <Image
-                        Source="/Tabellen Thorsten.jpeg"
-                        Stretch="Fill" AutomationProperties.HelpText="Tabellen Thorsten" AutomationProperties.Name="TabellenThorsten" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" />
+                            Width="70"
+                            Height="64"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            AutomationProperties.HelpText="Tabellen Thorsten"
+                            AutomationProperties.Name="TabellenThorsten"
+                            Source="/Tabellen Thorsten.jpeg"
+                            Stretch="Fill" />
                     </Grid>
                 </Grid>
             </TabItem>

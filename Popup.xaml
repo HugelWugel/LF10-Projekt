@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LF10_Lager_Projekt"
         mc:Ignorable="d"
-        Title="Popup" Height="200" Width="600" Icon="/Tabellen Thorsten.jpeg" WindowStartupLocation="CenterOwner" WindowStyle="None">
+        Title="Popup" Height="200" Width="600" Icon="/Tabellen Thorsten.jpeg" WindowStartupLocation="CenterOwner" WindowStyle="None"
+        FontSize="14"
+        FontFamily="Arial">
     <Grid>
         <Label x:Name="PopupActionName" Content="Hinzufügen" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Gainsboro" Height="28" Width="600"/>
         <Button x:Name="cancelButton" Content="abbrechen" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" Height="20" Margin="0,0,15,10" Click="cancelButton_Click"/>
         <Button x:Name="okButton" Content="OK" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" Height="20" Margin="0,0,90,10" Click="okButton_Click"/>
+        <TextBox x:Name="idTextbox" HorizontalAlignment="Right" Margin="0,4,10,0" TextWrapping="Wrap" VerticalAlignment="Top" AutomationProperties.HelpText="Materialname" AutomationProperties.ItemType="string" IsTabStop="False" TabIndex="2" Width="30" IsEnabled="False" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Hidden"/>
+        <Label x:Name="idLabel" Content="ID" HorizontalAlignment="Right" Margin="0,0,45,0" VerticalAlignment="Top" Visibility="Hidden"/>
         <Grid Margin="0,40,0,45">
             <TextBox x:Name="NameTextbox" HorizontalAlignment="Left" Margin="20,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Materialname" TabIndex="1"/>
             <TextBox x:Name="MengeTextbox" HorizontalAlignment="Left" Margin="310,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Materialname" AutomationProperties.ItemType="int" IsTabStop="False" TabIndex="3"/>
