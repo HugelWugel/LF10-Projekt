@@ -50,7 +50,7 @@ namespace LF10_Lager_Projekt
         private void loeschenButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show($"Möchten Sie alle {AllDataTable.SelectedItems.Count} selektieren Einträge löschen?", "Fortfahren", MessageBoxButton.OKCancel, MessageBoxImage.Hand);
-            if (result == MessageBoxResult.Yes)
+            if (result == MessageBoxResult.OK)
             {
                 List<int> ids = new List<int>();
                 for (int i = 0; AllDataTable.SelectedItems.Count > i; i++)

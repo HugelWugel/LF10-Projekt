@@ -71,10 +71,6 @@ namespace LF10_Lager_Projekt
                     mainWindow.LoadData();
                     Hide();
                     break;
-                case "Eintrag löschen":
-                    mainWindow.LoadData();
-                    Hide();
-                    break;
             }
         }
     }
