@@ -32,7 +32,7 @@ namespace LF10_Lager_Projekt
             NameTextbox.Text = Eintrag.Materialname;
             WarengruppeTextbox.Text = Eintrag.Warengruppe;
             MengeTextbox.Text = Eintrag.Menge.ToString();
-            GrenzwertTextbox.Text = Eintrag.Menge.ToString();
+            GrenzwertTextbox.Text = Eintrag.Grenzwert.ToString();
 
             idLabel.Visibility = Visibility.Visible;
             idTextbox.Visibility = Visibility.Visible;
@@ -61,11 +61,13 @@ namespace LF10_Lager_Projekt
             {
                 case "Eintrag hinzufügen":
                     dbService.createDataEntry(NameTextbox.Text, WarengruppeTextbox.Text, Convert.ToInt32(MengeTextbox.Text), Convert.ToInt32(GrenzwertTextbox.Text));
+                    MessageBox.Show($"Eintrag erstellt", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
                     mainWindow.LoadData();
                     Hide();
                     break;
                 case "Eintrag bearbeiten":
                     dbService.changeDataEntry(Convert.ToInt32(idTextbox.Text), NameTextbox.Text, WarengruppeTextbox.Text, Convert.ToInt32(MengeTextbox.Text), Convert.ToInt32(GrenzwertTextbox.Text));
+                    MessageBox.Show($"Eintrag bearbeitet", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
                     mainWindow.LoadData();
                     Hide();
                     break;

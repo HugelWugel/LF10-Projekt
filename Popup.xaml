@@ -14,16 +14,14 @@
     Icon="/Tabellen Thorsten.jpeg"
     WindowStartupLocation="CenterOwner"
     WindowStyle="None"
-    mc:Ignorable="d">
+    mc:Ignorable="d" ResizeMode="CanMinimize">
     <Grid>
         <Label
             x:Name="PopupActionName"
             Width="600"
             Height="28"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Background="Gainsboro"
-            Content="Hinzufügen" />
+            Background="#FFC5C5C5"
+            Content="Hinzufügen" VerticalAlignment="Top" />
         <Button
             x:Name="cancelButton"
             Height="20"
@@ -31,7 +29,8 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             Click="cancelButton_Click"
-            Content="abbrechen" />
+            Content="abbrechen"
+            Style="{DynamicResource RoundButton}"/>
         <Button
             x:Name="okButton"
             Width="60"
@@ -40,7 +39,8 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             Click="okButton_Click"
-            Content="OK" />
+            Content="OK" 
+            Style="{DynamicResource RoundButton}"/>
         <TextBox
             x:Name="idTextbox"
             Width="30"
@@ -81,7 +81,6 @@
                 VerticalAlignment="Center"
                 AutomationProperties.HelpText="Materialname"
                 AutomationProperties.ItemType="int"
-                IsTabStop="False"
                 TabIndex="3"
                 TextWrapping="Wrap" />
             <TextBox
@@ -92,7 +91,6 @@
                 VerticalAlignment="Center"
                 AutomationProperties.HelpText="Materialname"
                 AutomationProperties.ItemType="int"
-                IsTabStop="False"
                 TabIndex="4"
                 TextWrapping="Wrap" />
             <TextBox
@@ -103,7 +101,6 @@
                 VerticalAlignment="Center"
                 AutomationProperties.HelpText="Materialname"
                 AutomationProperties.ItemType="string"
-                IsTabStop="False"
                 TabIndex="2"
                 TextWrapping="Wrap" />
             <Label

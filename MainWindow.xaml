@@ -27,7 +27,7 @@
                         CanUserSortColumns="False"
                         ColumnWidth="*"
                         IsReadOnly="True"
-                        IsSynchronizedWithCurrentItem="False" />
+                        Style="{DynamicResource KritDataGrid}"/>
                     <Grid Margin="0,0,0,0" VerticalAlignment="Top">
                         <Button
                             x:Name="Bestellbutton"
@@ -37,7 +37,7 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
                             Content="Bestellen"
-                            Style="{DynamicResource RoundButton}" />
+                            Style="{DynamicResource AddButton}" />
                         <Image
                             Width="70"
                             Height="64"
@@ -47,10 +47,11 @@
                             AutomationProperties.Name="TabellenThorsten"
                             Source="/Tabellen Thorsten.jpeg"
                             Stretch="Fill" />
+                        <Label x:Name="KritBestandLabel" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="85,0,0,0" Content="Kritischer Bestand" VerticalContentAlignment="Center" FontSize="20" BorderBrush="Black" BorderThickness="0,0,0,1"/>
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="BestandslisteTab" Header="Bestandsteile">
+            <TabItem x:Name="BestandslisteTab" Header="Bestandsliste">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid
                         x:Name="AllDataTable"
@@ -60,7 +61,9 @@
                         CanUserResizeColumns="False"
                         CanUserSortColumns="False"
                         ColumnWidth="*"
-                        IsReadOnly="True" SelectionChanged="AllDataTable_SelectionChanged" />
+                        IsReadOnly="True" SelectionChanged="AllDataTable_SelectionChanged" CanUserResizeRows="False"
+                        Style="{DynamicResource AllDataGrid}">
+                    </DataGrid>
                     <Grid Margin="0,0,0,0" VerticalAlignment="Top">
                         <Button
                             x:Name="hinzufuegenButton"
@@ -70,7 +73,8 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
                             Click="hinzufuegenButton_Click"
-                            Content="Hinzufügen" />
+                            Content="Hinzufügen" 
+                            Style="{DynamicResource AddButton}"/>
                         <Button
                             x:Name="bearbeitenButton"
                             Width="100"
@@ -79,7 +83,8 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
                             Click="bearbeitenButton_Click"
-                            Content="Bearbeiten" IsEnabled="False" />
+                            Content="Bearbeiten" IsEnabled="False"
+                            Style="{DynamicResource UpdateButton}"/>
                         <Button
                             x:Name="loeschenButton"
                             Width="100"
@@ -88,7 +93,8 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
                             Click="loeschenButton_Click"
-                            Content="Löschen" IsEnabled="False" />
+                            Content="Löschen" IsEnabled="False" 
+                            Style="{DynamicResource DeleteButton}"/>
                         <Image
                             Width="70"
                             Height="64"

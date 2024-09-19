@@ -59,6 +59,7 @@ namespace LF10_Lager_Projekt
                     ids.Add(ausgewählterArtikel.Materialnummer);
                 }
                 int affectedRows = dbService.deleteDataEntry(ids);
+                MessageBox.Show($"{affectedRows} erfolgreich gelöscht", "Ok", MessageBoxButton.OK, MessageBoxImage.Information);
                 LoadData();
             }            
         }
