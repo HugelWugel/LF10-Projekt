@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Tabellen Thorsten.jpeg" />
+    <None Remove="Bilder\Tabellen Thorsten.jpeg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Tabellen Thorsten.jpeg" />
+    <Resource Include="Bilder\Tabellen Thorsten.jpeg" />
   </ItemGroup>
 
 </Project>

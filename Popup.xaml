@@ -11,7 +11,7 @@
     Height="200"
     FontFamily="Arial"
     FontSize="14"
-    Icon="/Tabellen Thorsten.jpeg"
+    Icon="/Bilder/Tabellen Thorsten.jpeg"
     WindowStartupLocation="CenterOwner"
     WindowStyle="None"
     mc:Ignorable="d" ResizeMode="CanMinimize">
