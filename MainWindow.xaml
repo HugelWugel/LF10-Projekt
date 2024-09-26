@@ -10,7 +10,7 @@
     Width="1000"
     Height="600"
     Closing="OnWindowClosing"
-    Icon="/Tabellen Thorsten.jpeg"
+    Icon="/Bilder/Tabellen Thorsten.jpeg"
     mc:Ignorable="d"
     FontSize="14"
     FontFamily="Arial">
@@ -45,7 +45,7 @@
                             VerticalAlignment="Top"
                             AutomationProperties.HelpText="Tabellen Thorsten"
                             AutomationProperties.Name="TabellenThorsten"
-                            Source="/Tabellen Thorsten.jpeg"
+                            Source="/Bilder/Tabellen Thorsten.jpeg"
                             Stretch="Fill" />
                         <Label x:Name="KritBestandLabel" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="85,0,0,0" Content="Kritischer Bestand" VerticalContentAlignment="Center" FontSize="20" BorderBrush="Black" BorderThickness="0,0,0,1"/>
                     </Grid>
@@ -102,7 +102,7 @@
                             VerticalAlignment="Top"
                             AutomationProperties.HelpText="Tabellen Thorsten"
                             AutomationProperties.Name="TabellenThorsten"
-                            Source="/Tabellen Thorsten.jpeg"
+                            Source="/Bilder/Tabellen Thorsten.jpeg"
                             Stretch="Fill" />
                     </Grid>
                 </Grid>
