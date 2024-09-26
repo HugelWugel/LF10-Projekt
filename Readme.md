@@ -28,9 +28,22 @@ Name: Artikelbestand
 
 
 # Dokumentation
+## Projektplanung
+### Ist-Analyse
+Es ist keine Software und Prozesse vorhanden
+### Soll-Konzept
+Das Unternehmen plant die Erstellung eines eigenen DBMS zur Verwaltung der Artikel in Ihrem Lager und zur Unterstützung der Abteilung Einkauf. Es soll in C# entwickelt werden und Verbindung zu SQL Servern möglich sein. Ebenso soll das Programm erweiterbar sein.
+### Use-Case
+![use-case](/Bilder/UseCase_final.png)
+### Mockups
+![Hauptseite](/Bilder/Dashboard.png)
+![Bestandsliste](/Bilder/Bestandsliste.png)
+![Popups](/Bilder/Popups.png)
 ## Durchführung
 ### Erstellen der Datenbank
 Da die Daten zwischen Mitarbeitern gleich sein und vom Einkauf zugänglich sein soll, musste eine Datenbank erstellt werden.
+![er-modell](/Bilder/ERModellLF10.png)
+
 ```SQL
 CREATE TABLE Lagerbestand(
 	Materialnummer int IDENTITY(1,1) PRIMARY KEY,
