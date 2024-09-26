@@ -7,6 +7,8 @@ Es ist keine Software und Prozesse vorhanden
 Das Unternehmen plant die Erstellung eines eigenen DBMS zur Verwaltung der Artikel in Ihrem Lager und zur Unterstützung der Abteilung Einkauf. Es soll in C# entwickelt werden und Verbindung zu SQL Servern möglich sein. Ebenso soll das Programm erweiterbar sein.
 ### Use-Case
 ![use-case](/Bilder/UseCase_final.png)
+### ER-Modell
+![er-modell](/Bilder/ERModellLF10.png)
 ### Mockups
 ![Hauptseite](/Bilder/Dashboard.png)
 ![Bestandsliste](/Bilder/Bestandsliste.png)
@@ -14,8 +16,6 @@ Das Unternehmen plant die Erstellung eines eigenen DBMS zur Verwaltung der Artik
 ## Durchführung
 ### Erstellen der Datenbank
 Da die Daten zwischen Mitarbeitern gleich sein und vom Einkauf zugänglich sein soll, musste eine Datenbank erstellt werden.
-![er-modell](/Bilder/ERModellLF10.png)
-
 ```SQL
 CREATE TABLE Lagerbestand(
 	Materialnummer int IDENTITY(1,1) PRIMARY KEY,
